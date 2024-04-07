@@ -23,8 +23,8 @@ def split_pdf(input_pdf_path, output_dir):
 
         output_pdf_name = input_pdf_path.split(".pdf")[0] + f"-{page_index+1}" + '.pdf'
 
-        with open(output_pdf_name, 'wb') as output_pdf_file:
-            writer.write(output_pdf_file)
+        with open(output_pdf_name, 'wb') as output_file:
+            writer.write(output_dir + output_file)
 
 
 if __name__ == "__main__":
