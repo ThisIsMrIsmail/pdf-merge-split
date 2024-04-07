@@ -11,20 +11,20 @@ def create_dir(dir_name):
     return False
 
 def check_if_pdf(file_ext):
-    if os.path.splitext(file_ext) == ".pdf":
+    if file_ext == ".pdf":
         return True
     return False
 
-def split_pdf(input_pdf_path, output_dir):
-    input_pdf_file = PdfReader(open(input_pdf_path, "rb"))
+def split_pdf(input_file, file_name, output_dir):
+    pdf = PdfReader(open(input_file, "rb"))
 
-    for page_index in range(len(input_pdf_file.pages)):
-        writer.add_page(input_pdf_file.pages[page_index])
+    for page_index in range(len(pdf.pages)):
+        writer.add_page(pdf.pages[page_index])
 
-        output_pdf_name = input_pdf_path.split(".pdf")[0] + f"-{page_index+1}" + '.pdf'
+        output_pdf_name = output_dir + file_name + f"-page-{page_index+1}" + '.pdf'
 
         with open(output_pdf_name, 'wb') as output_file:
-            writer.write(output_dir + output_file)
+            writer.write(output_file)
 
 
 if __name__ == "__main__":
@@ -37,12 +37,18 @@ if __name__ == "__main__":
     dir_name = file_list[0]
     file_name = os.path.basename(file_list[0])
     file_ext = file_list[-1]
+    
+    print(file_list)
+    print(dir_name)
+    print(file_name)
+    print(file_ext)
+
 
     if check_if_pdf(file_ext):
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
         output_dir = dir_name + f"-{nowtime}"
 
         create_dir(output_dir)
-        split_pdf(file, output_dir)
+        split_pdf(file, file_name, output_dir)
     else:
         print("Please provide a valid PDF file.")
