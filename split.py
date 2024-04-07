@@ -19,9 +19,10 @@ def split_pdf(input_file, file_name, output_dir):
     pdf = PdfReader(open(input_file, "rb"))
 
     for page_index in range(len(pdf.pages)):
+        writer = PdfWriter()
         writer.add_page(pdf.pages[page_index])
 
-        output_pdf_name = output_dir + file_name + f"-page-{page_index+1}" + '.pdf'
+        output_pdf_name = f"{output_dir}/{file_name}-page-{page_index+1}.pdf"
 
         with open(output_pdf_name, 'wb') as output_file:
             writer.write(output_file)
@@ -38,12 +39,6 @@ if __name__ == "__main__":
     file_name = os.path.basename(file_list[0])
     file_ext = file_list[-1]
     
-    print(file_list)
-    print(dir_name)
-    print(file_name)
-    print(file_ext)
-
-
     if check_if_pdf(file_ext):
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
         output_dir = dir_name + f"-{nowtime}"
