@@ -6,7 +6,7 @@ import os
 writer = PdfWriter()
 
 files = sys.argv[1:]
-    
+
 if len(files) == 0:
     print("Please provide a PDF file.")
     sys.exit(1)

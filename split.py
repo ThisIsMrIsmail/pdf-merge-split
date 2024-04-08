@@ -54,7 +54,7 @@ if __name__ == "__main__":
         
         if check_if_pdf(file_ext):
             nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
-            output_dir = dir_name + f"-{nowtime}"
+            output_dir = dir_name + f"-splitted-{nowtime}"
 
             create_dir(output_dir)
             split_pdf(file, file_name, output_dir)
