@@ -30,7 +30,7 @@ def split_pdf(input_file, file_name, output_dir):
 
 if __name__ == "__main__":
 
-    file = "C:/Users/ismail/dev/side-projects/pdf-merge-split/pdf-1.pdf"
+    file = f"{os.path.expanduser("~")}/dev/side-projects/pdfiy/pdf-1.pdf"
     file = file.strip()
 
     file_list = os.path.splitext(file)
