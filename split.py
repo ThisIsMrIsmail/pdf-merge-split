@@ -30,21 +30,33 @@ def split_pdf(input_file, file_name, output_dir):
 
 
 if __name__ == "__main__":
+
+    # file = f"{os.path.expanduser("~")}/dev/side-projects/pdfiy/pdf-1.pdf"
+    # file = file.strip()
+
+    files = sys.argv[1:]
+
+    if len(files) == 0:
+        print("Please provide a PDF file.")
+        sys.exit(1)
     
-    file = f"{os.path.expanduser("~")}/dev/side-projects/pdfiy/pdf-1.pdf"
-    file = file.strip()
+    for file in files:
+        if not os.path.exists(file):
+            print(f"File does not exist: {file}")
+            time.sleep(3)
+            sys.exit(1)
+        
+        file_list = os.path.splitext(file)
 
-    file_list = os.path.splitext(file)
+        dir_name = file_list[0]
+        file_name = os.path.basename(file_list[0])
+        file_ext = file_list[-1]
+        
+        if check_if_pdf(file_ext):
+            nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
+            output_dir = dir_name + f"-{nowtime}"
 
-    dir_name = file_list[0]
-    file_name = os.path.basename(file_list[0])
-    file_ext = file_list[-1]
-    
-    if check_if_pdf(file_ext):
-        nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
-        output_dir = dir_name + f"-{nowtime}"
-
-        create_dir(output_dir)
-        split_pdf(file, file_name, output_dir)
-    else:
-        print("Please provide a valid PDF file.")
+            create_dir(output_dir)
+            split_pdf(file, file_name, output_dir)
+        else:
+            print("Please provide a valid PDF file.")
