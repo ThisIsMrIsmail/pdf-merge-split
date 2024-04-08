@@ -1,5 +1,6 @@
 from pypdf import PdfReader, PdfWriter
 import os
+import sys
 import time
 
 writer = PdfWriter()
