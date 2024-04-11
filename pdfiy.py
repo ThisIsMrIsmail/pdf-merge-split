@@ -1,5 +1,4 @@
 from pypdf import PdfReader, PdfWriter
-import tkinter as tk
 import tkinter.messagebox
 import time
 import sys
@@ -13,9 +12,6 @@ class pdfiy:
         pass
     
     def notify(self, msg):
-        window = tk.Tk()
-        window.iconbitmap("pdfiy.ico")
-        window.mainloop()
         tkinter.messagebox.showerror(title="PDFIY", message=msg, icon="warning", type="ok")
 
     def mkdir(self, dir_name):
