@@ -33,6 +33,7 @@ if __name__ == "__main__":
 
     # file = f"{os.path.expanduser("~")}/dev/side-projects/pdfiy/pdf-1.pdf"
     # file = file.strip()
+    # C:\\Users\\ismail\\dev\\side-projects\\pdfiy\\program\\dist\\split.exe
 
     files = sys.argv[1:]
 

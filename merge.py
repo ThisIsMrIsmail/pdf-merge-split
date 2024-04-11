@@ -11,6 +11,9 @@ if len(files) == 0:
     print("Please provide a PDF file.")
     sys.exit(1)
 
+print(sys.argv)
+time.sleep(3)
+
 for file in files:
     if not os.path.exists(file):
         print(f"File does not exist: {file}")
