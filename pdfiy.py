@@ -19,6 +19,7 @@ class pdfiy:
             icon="pdfiy.ico",
             duration="short")
         notifier.set_audio(audio.Default, loop=False)
+        notifier.add_actions("OK", lambda: notifier.close())
         notifier.show()
 
     def mkdir(self, dir_name):
