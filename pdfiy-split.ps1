@@ -1,0 +1,1 @@
+C:\Users\ismail\dev\side-projects\pdfiy\dist\pdfiy.exe split $*

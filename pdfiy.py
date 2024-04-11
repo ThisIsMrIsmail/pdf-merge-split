@@ -25,6 +25,7 @@ class pdfiy:
         file_name = ""
         for file in self.files:
             file_list = os.path.splitext(file)
+            dir_name = file_list[0]
             file_name = os.path.basename(file_list[0])
             file_ext = file_list[-1]
             if not os.path.exists(file):
@@ -37,7 +38,7 @@ class pdfiy:
                 continue
             self.writer.append(file)
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
-        self.writer.write(f"{file_name}-merged-{nowtime}.pdf")
+        self.writer.write(f"{dir_name}\{file_name}-merged-{nowtime}.pdf")
         self.writer.close()
 
     def split(self, input_file, file_name, output_dir):
