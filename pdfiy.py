@@ -1,4 +1,5 @@
 from pypdf import PdfReader, PdfWriter
+import tkinter as tk
 import tkinter.messagebox
 import time
 import sys
@@ -11,8 +12,11 @@ class pdfiy:
         self.files = files
         pass
     
-    def notify(self, title, msg):
-        tkinter.messagebox.showerror(title="PDFIY", message=msg, icon="error", type="ok")
+    def notify(self, msg):
+        window = tk.Tk()
+        window.iconbitmap("pdfiy.ico")
+        window.mainloop()
+        tkinter.messagebox.showerror(title="PDFIY", message=msg, icon="warning", type="ok")
 
     def mkdir(self, dir_name):
         if not os.path.exists(dir_name):
@@ -34,10 +38,10 @@ class pdfiy:
         for file in self.files:
             file_ext = os.path.splitext(file)[-1]
             if not os.path.exists(file):
-                self.notify(f"{os.path.basename(file)}: File does not exist.")
+                self.notify(f"{os.path.basename(file)}: does not exist.")
                 continue
             if not self.check_if_pdf(file_ext):
-                self.notify(f"{os.path.basename(file)}: File is not a valid PDF file.")
+                self.notify(f"{os.path.basename(file)}: is not a valid PDF file.")
                 continue
             self.writer.append(file)
 
@@ -63,10 +67,10 @@ class pdfiy:
             file_name = os.path.basename(file_list[0])
             file_ext = file_list[-1]
             if not os.path.exists(file):
-                self.notify(f"{os.path.basename(file)}: File does not exist.")
+                self.notify(f"{os.path.basename(file)}: does not exist.")
                 continue
             if not self.check_if_pdf(file_ext):
-                self.notify(f"{os.path.basename(file)}: File is not a valid PDF file.")
+                self.notify(f"{os.path.basename(file)}: is not a valid PDF file.")
                 continue
             nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
             output_dir = f"{dir_name}-splitted-{nowtime}"
@@ -89,5 +93,5 @@ if __name__ == "__main__":
     elif op == "split":
         pdfiy.split_execute()
     else:
-        pdfiy.notify(f"{os.path.basename(files)}: Not a valid operation.")
+        pdfiy.notify("Something went wrong.")
     sys.exit(1)
