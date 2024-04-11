@@ -39,7 +39,7 @@ class pdfiy:
                 continue
             self.writer.append(file)
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
-        self.writer.write(f"{dir_name}\{file_name}-merged-{nowtime}.pdf")
+        self.writer.write(f"{dir_name}\\{file_name}-merged-{nowtime}.pdf")
         self.writer.close()
 
     def split(self, input_file, file_name, output_dir):
@@ -47,7 +47,7 @@ class pdfiy:
         for page_index in range(len(pdf.pages)):
             writer = PdfWriter()
             writer.add_page(pdf.pages[page_index])
-            output_pdf_name = f"{output_dir}/{file_name}-page-{page_index+1}.pdf"
+            output_pdf_name = f"{output_dir}\\{file_name}-page-{page_index+1}.pdf"
             with open(output_pdf_name, 'wb') as output_file:
                 writer.write(output_file)
 
@@ -64,10 +64,10 @@ class pdfiy:
             file_list = os.path.splitext(file)
             dir_name = file_list[0]
             file_name = os.path.basename(file_list[0])
-            file_ext = file_list[-1]       
-            if self.check_if_pdf(file_ext):
+            file_ext = file_list[-1]
+            if not self.check_if_pdf(file_ext):
                 # nofity
-                print("Please provide a valid PDF file.")
+                print("Please provide a valid PDF file. in split")
                 continue
             nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
             output_dir = f"{dir_name}-splitted-{nowtime}"
@@ -78,7 +78,7 @@ class pdfiy:
 if __name__ == "__main__":
     files = sys.argv[2:]
     op = sys.argv[1]
-
+    
     if len(files) == 0:
         # nofity
         print("Please provide at least one  PDF file.")
