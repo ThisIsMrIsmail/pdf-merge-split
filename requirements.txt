@@ -9,5 +9,4 @@ pywin32==306
 pywin32-ctypes==0.2.2
 setuptools==69.2.0
 tk==0.1.0
-winotify==1.1.0
 winregistry==1.1.1
