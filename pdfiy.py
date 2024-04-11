@@ -23,7 +23,7 @@ class pdfiy:
 
     def merge(self):
         file_name = ""
-        for file in files:
+        for file in self.files:
             file_list = os.path.splitext(file)
             file_name = os.path.basename(file_list[0])
             file_ext = file_list[-1]
@@ -54,7 +54,7 @@ class pdfiy:
             # nofity
             print("Please provide a PDF file.")
             sys.exit(1)
-        for file in files:
+        for file in self.files:
             if not os.path.exists(file):
                 print(f"File does not exist: {file}")
                 # nofity
