@@ -47,6 +47,9 @@ class pdfiy:
                 self.notify(os.path.basename(file), "File is not a valid PDF file.")
                 continue
             self.writer.append(file)
+        if len(self.writer.pages) == 0:
+            self.notify(os.path.basename(file), "No pages to merge.")
+            return
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
         self.writer.write(f"{dir_name}\\{file_name}-merged-{nowtime}.pdf")
         self.writer.close()
@@ -66,6 +69,7 @@ class pdfiy:
         for file in self.files:
             if not os.path.exists(file):
                 self.notify(os.path.basename(file), "File does not exist.")
+                continue
             file_list = os.path.splitext(file)
             dir_name = file_list[0]
             file_name = os.path.basename(file_list[0])

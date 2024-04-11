@@ -1,2 +1,13 @@
+altgraph==0.17.4
+packaging==24.0
+pefile==2023.2.7
+pyinstaller==6.5.0
+pyinstaller-hooks-contrib==2024.3
 pypdf==4.2.0
+pypiwin32==223
+pywin32==306
+pywin32-ctypes==0.2.2
+setuptools==69.2.0
+tk==0.1.0
+winotify==1.1.0
 winregistry==1.1.1
