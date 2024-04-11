@@ -1,7 +1,5 @@
-$send_to_dir = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\SendTo"
-
-$MergeShortcut = $WshShell.CreateShortcut("$send_to_dir\Merge with PDFIY.lnk")
-$SplitShortcut = $WshShell.CreateShortcut("$send_to_dir\Split with PDFIY.lnk")
+Remove-Item "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\SendTo\Merge with PDFIY.lnk" -Force
+Remove-Item "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\SendTo\Split with PDFIY.lnk" -Force
 
 Get-ChildItem -Path C:\pdfiy -Include *.* -File -Recurse | foreach { $_.Delete()}
 Remove-Item $PSCommandPath -Force
