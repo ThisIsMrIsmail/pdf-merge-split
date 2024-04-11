@@ -26,16 +26,16 @@ class pdfiy:
         dir_name = os.path.dirname(first_file)
         file_list = os.path.splitext(first_file)
         file_name = os.path.basename(file_list[0])
+        
         for file in self.files:
-            file_list = os.path.splitext(file)
-            file_ext = file_list[-1]
+            file_ext = os.path.splitext(file)[-1]
             if not os.path.exists(file):
                 # nofity
                 print(f"File does not exist: {file}")
                 continue
             if not self.check_if_pdf(file_ext):
                 # nofity
-                print("Please provide a valid PDF file.") 
+                print(f"{os.path.basename(file)} is not valid PDF file.")
                 continue
             self.writer.append(file)
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
@@ -78,7 +78,7 @@ class pdfiy:
 if __name__ == "__main__":
     files = sys.argv[2:]
     op = sys.argv[1]
-    
+
     if len(files) == 0:
         # nofity
         print("Please provide at least one  PDF file.")
