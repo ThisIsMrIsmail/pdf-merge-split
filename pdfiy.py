@@ -34,11 +34,7 @@ class pdfiy:
         dir_name = os.path.dirname(first_file)
         file_list = os.path.splitext(first_file)
         file_name = os.path.basename(file_list[0])
-        
-        if len(self.writer.pages) == 0:
-            self.notify(f"{os.path.basename(file)} No pages to merge.")
-            # self.notify(os.path.basename(file), "No pages to merge.")
-            return
+
         for file in self.files:
             file_ext = os.path.splitext(file)[-1]
             if not os.path.exists(file):
@@ -50,6 +46,9 @@ class pdfiy:
                 # self.notify(os.path.basename(file), "File is not a valid PDF file.")
                 continue
             self.writer.append(file)
+
+        if len(self.writer.pages) == 0:
+            return
         nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
         self.writer.write(f"{dir_name}\\{file_name}-merged-{nowtime}.pdf")
         self.writer.close()
@@ -64,9 +63,6 @@ class pdfiy:
                 writer.write(output_file)
 
     def split_execute(self):
-        if len(self.files) == 0:
-            self.notify(f"{os.path.basename(file)} File is not a valid PDF file.")
-            # self.notify(os.path.basename(file), "File is not a valid PDF file.")
         for file in self.files:
             if not os.path.exists(file):
                 self.notify(f"{os.path.basename(file)} File does not exist.")
