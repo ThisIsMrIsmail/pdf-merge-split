@@ -10,10 +10,8 @@ $WshShell = New-Object -comObject WScript.Shell
 $MergeShortcut = $WshShell.CreateShortcut("$sendToDir\Merge with PDFIY.lnk")
 $SplitShortcut = $WshShell.CreateShortcut("$sendToDir\Split with PDFIY.lnk")
 
-# $MergeShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdify-merge.exe"
-# $SplitShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdify-split.exe"
-$MergeShortcut.TargetPath = ".\pdify-merge.exe"
-$SplitShortcut.TargetPath = ".\pdify-split.exe"
+$MergeShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdfiy-merge.exe"
+$SplitShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdfiy-split.exe"
 
 $MergeShortcut.Save()
 $SplitShortcut.Save()
