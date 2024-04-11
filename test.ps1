@@ -1,0 +1,1 @@
+python pdfiy.py merge c:\Users\ismail\Downloads\test-pdfiy\1.pdf c:\Users\ismail\Downloads\test-pdfiy\2.pdf c:\Users\ismail\Downloads\test-pdfiy\3.pdf
