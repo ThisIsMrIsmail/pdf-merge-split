@@ -1,1 +1,1 @@
-Remove-Item -Recurse -Force "C:\Program Files\pdfiy"
+Remove-Item -Recurse -Force "C:\pdfiy"

@@ -1,5 +1,5 @@
 
-$pdfiy_folder = "C:\Program Files\pdfiy"
+$pdfiy_folder = "C:\pdfiy"
 $send_to_dir = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\SendTo"
 
 if (-not (Test-Path $pdfiy_folder)) {
