@@ -1,8 +1,17 @@
+"""
+This will be used if we want to add a context menu to merge and split pdf files.
+Instead of making it into Send To menu.
+
+Note that this is only for Windows OS.
+"""
+
 import winreg as reg
 
+# for folders only
 # key_path = r"Directory\\Background\\shell"
 # command_key_path = r"Directory\\Background\\shell\\Split PDF\\command"
 
+# for all files
 key_path = r"*\\shell"
 command_key_path = r"*\\shell\\Split PDF\\command"
 
