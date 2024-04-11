@@ -7,11 +7,11 @@ if (-not (Test-Path $sendToDir)) {
 
 $WshShell = New-Object -comObject WScript.Shell
 
-$PdifyShortcut = $WshShell.CreateShortcut("$sendToDir\Merge with PDFIY.lnk")
-$PdifylitShortcut = $WshShell.CreateShortcut("$sendToDir\Split with PDFIY.lnk")
+$MergeShortcut = $WshShell.CreateShortcut("$sendToDir\Merge with PDFIY.lnk")
+$SplitShortcut = $WshShell.CreateShortcut("$sendToDir\Split with PDFIY.lnk")
 
-$PdifyMergeShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\dist\pdify-merge.exe"
-$PdifySplitShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\dist\pdify-split.exe"
+$MergeShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdify-merge.exe"
+$SplitShortcut.TargetPath = "C:\Users\ismail\dev\side-projects\pdfiy\release\pdify-split.exe"
 
-$PdifyMergeShortcut.Save()
-$PdifySplitShortcut.Save()
+$MergeShortcut.Save()
+$SplitShortcut.Save()
