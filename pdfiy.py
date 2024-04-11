@@ -22,11 +22,12 @@ class pdfiy:
         return False
 
     def merge(self):
-        file_name = ""
+        first_file = self.files[0]
+        dir_name = os.path.dirname(first_file)
+        file_list = os.path.splitext(first_file)
+        file_name = os.path.basename(file_list[0])
         for file in self.files:
             file_list = os.path.splitext(file)
-            dir_name = file_list[0]
-            file_name = os.path.basename(file_list[0])
             file_ext = file_list[-1]
             if not os.path.exists(file):
                 # nofity
