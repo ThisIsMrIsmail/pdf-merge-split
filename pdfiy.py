@@ -6,16 +6,12 @@ import os
 
 
 class pdfiy:
-    def __init__(self, files) -> None:
+    def __init__(self, files):
         self.writer = PdfWriter()
         self.files = files
         pass
     
-    # def notify(self, title, msg):
-    def notify(self, msg):
-        # notifier = Notification(app_id="PDFIY", title=title, msg=msg, icon="pdfiy.ico", duration="short")
-        # notifier.set_audio(audio.Default, loop=False)
-        # notifier.show()
+    def notify(self, title, msg):
         tkinter.messagebox.showerror(title="PDFIY", message=msg, icon="error", type="ok")
 
     def mkdir(self, dir_name):
@@ -39,11 +35,9 @@ class pdfiy:
             file_ext = os.path.splitext(file)[-1]
             if not os.path.exists(file):
                 self.notify(f"{os.path.basename(file)}: File does not exist.")
-                # self.notify(os.path.basename(file), "File does not exist.")
                 continue
             if not self.check_if_pdf(file_ext):
                 self.notify(f"{os.path.basename(file)}: File is not a valid PDF file.")
-                # self.notify(os.path.basename(file), "File is not a valid PDF file.")
                 continue
             self.writer.append(file)
 
@@ -70,11 +64,9 @@ class pdfiy:
             file_ext = file_list[-1]
             if not os.path.exists(file):
                 self.notify(f"{os.path.basename(file)}: File does not exist.")
-                # self.notify(os.path.basename(file), "File does not exist.")
                 continue
             if not self.check_if_pdf(file_ext):
                 self.notify(f"{os.path.basename(file)}: File is not a valid PDF file.")
-                # self.notify(os.path.basename(file), "File is not a valid PDF file.")
                 continue
             nowtime = time.strftime("%Y-%m-%d_%H.%M.%S", time.localtime(time.time()))
             output_dir = f"{dir_name}-splitted-{nowtime}"
@@ -90,7 +82,6 @@ if __name__ == "__main__":
 
     if len(files) == 0:
         pdfiy.notify("Please, select at least one  PDF file.")
-        # pdfiy.notify("", "Please, select at least one  PDF file.")
         sys.exit(1)
 
     if op == "merge":
@@ -99,5 +90,4 @@ if __name__ == "__main__":
         pdfiy.split_execute()
     else:
         pdfiy.notify(f"{os.path.basename(files)}: Not a valid operation.")
-        # pdfiy.notify(os.path.basename(files), "Not a valid operation.")
     sys.exit(1)
