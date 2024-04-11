@@ -1,0 +1,1 @@
+"C:\Users\ismail\AppData\Roaming\Microsoft\Windows\SendTo"
